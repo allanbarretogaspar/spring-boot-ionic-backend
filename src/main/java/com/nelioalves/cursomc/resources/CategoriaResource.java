@@ -40,6 +40,7 @@ public class CategoriaResource {
 	public ResponseEntity<Void> inserir(@Valid @RequestBody CategoriaDTO objDTO){
 		
 		Categoria obj = service.fromDTO(objDTO);
+		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.
 				fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
